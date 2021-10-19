@@ -9,7 +9,7 @@ def normalize_timestamp(s):
 	Input: String in month/day/year hour:minute:second AM/PM format
 	Output: String of datetime object converted from assumed PDT to EDT in RFC3339 format
 	"""
-	datetime_object = datetime.strptime(s, "%m/%d/%y %H:%M:%S %p")
+	datetime_object = datetime.strptime(s, "%m/%d/%y %I:%M:%S %p")
 	source_timezone = pytz.timezone("America/Los_Angeles")
 	target_timezone = pytz.timezone("America/New_York")
 	datetime_object_converted = source_timezone.localize(datetime_object, is_dst=True).astimezone(target_timezone)
